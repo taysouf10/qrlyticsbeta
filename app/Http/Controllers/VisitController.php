@@ -37,9 +37,9 @@ class VisitController extends Controller
                 'browser' => $browser
             ]);
 
-            // dd(Location::get(request()->getClientIp()));
+            dd(Location::get(request()->getClientIp()));
 
-        return redirect()->to($link->link->link);
+        // return redirect()->to($link->link->link);
         // dd();
         
     }
