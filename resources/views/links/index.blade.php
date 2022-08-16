@@ -7,7 +7,7 @@
                     <div class="d-flex justify-content-between ">
                         <div><h2 class="card-title">{{ $compaign->name }}</h2></div>
                         <div>
-                            <a href="/dashboard/compaigns/{{ $compaign->id }}/links/new" class="btn btn-primary">Add Link</a>
+                            <a href="/dashboard/compaigns/{{ $compaign->id }}/links/new" class="btn btn-primary">Create Link</a>
                         </div>
                     </div>
                     <div class="my-4 row">
