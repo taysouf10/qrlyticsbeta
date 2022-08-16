@@ -31,22 +31,21 @@ class VisitController extends Controller
 
         $location = Location::get(request()->getClientIp());
 
-        // $link = $link->visits()
-        //     ->create([
-        //         'user_agent' => $request->userAgent(),
-        //         'device' => $device,
-        //         'platform' => $platform,
-        //         'browser' => $browser,
-        //         'ip' => $location->ip ,
-        //         'city' => $location->cityName ,
-        //         'region' => $location->regionName ,
-        //         'country' => $location->countryName ,
-        //         'long' => $location->long ,
-        //         'lat' => $location->lat ,
-        //         'timezone' => $location->timezone ,
-        //     ]);
+        $link = $link->visits()
+            ->create([
+                'user_agent' => $request->userAgent(),
+                'device' => $device,
+                'platform' => $platform,
+                'browser' => $browser,
+                'ip' => $location->ip ,
+                'city' => $location->cityName ,
+                'region' => $location->regionName ,
+                'country' => $location->countryName ,
+                'long' => $location->longitude ,
+                'lat' => $location->latitude ,
+                'timezone' => $location->timezone ,
+            ]);
 
-            dd(Location::get(request()->getClientIp()));
 
         return redirect()->to($link->link->link);
         // dd();
