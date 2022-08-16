@@ -24,8 +24,14 @@ class VisitController extends Controller
         $agent->isDesktop();
         $agent->isPhone();
         $agent->isRobot();
+        // $device = "WebKit";
+        //Checking phone that return webkit instead of device model
+        if(!$agent->isAndroidOS() && strcmp($device,"WebKit")==0) {
+            $device = "Other Android devices";
+        }
 
-        // dd($browser);
+
+        // dd($device);
         
         // return redirect()->to($link->link);
 
