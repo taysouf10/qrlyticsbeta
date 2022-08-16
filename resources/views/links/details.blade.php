@@ -124,7 +124,7 @@
                                                 // label: '# of Votes',
                                                 data: devicesValues,
                                                 backgroundColor: [
-                                                    'rgba(255, 99, 132)',
+                                                    'rgba(255, 98, 132)',
                                                     'rgba(54, 162, 235)',
 
                                                 ],
