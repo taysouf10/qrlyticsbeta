@@ -37,13 +37,13 @@ class VisitController extends Controller
                 'device' => $device,
                 'platform' => $platform,
                 'browser' => $browser,
-                'ip' => $link->ip ,
-                'city' => $link->city ,
-                'region' => $link->region ,
-                'country' => $link->country ,
-                'long' => $link->long ,
-                'lat' => $link->lat ,
-                'timezone' => $link->timezone ,
+                'ip' => $location->ip ,
+                'city' => $location->city ,
+                'region' => $location->region ,
+                'country' => $location->country ,
+                'long' => $location->long ,
+                'lat' => $location->lat ,
+                'timezone' => $location->timezone ,
             ]);
 
             // dd(Location::get(request()->getClientIp()));
