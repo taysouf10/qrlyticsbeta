@@ -15,7 +15,7 @@
                                 <div class="col">
                                     <img width="40" src = "{{ asset('/images/folder_compaign.svg') }}" />
                                     <div><span class=""><a href="/dashboard/compaigns/{{ $compaign->id }}/links" class="stretched-link link-unstyled">{{$compaign->name}}</a></span></div>
-                                    <div><i class="text-secondary text-xs">2 hours ago</i></div>
+                                    <div><i class="text-secondary text-xs">2 minutes ago</i></div>
                                 </div>
                             </div>
                             {{-- <div class="col-md-6 d-flex justify-content-around">
