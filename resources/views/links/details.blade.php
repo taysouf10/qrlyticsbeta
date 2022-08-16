@@ -35,7 +35,7 @@
                 <div class=" mb-3 col-md-3">
                     <div class="card shadow-sm border-0 bg-white rounded">
                         <div class="card-body">
-                            <div class="my-3 text-center">{!! QrCode::size(260)->color(0, 87, 163)->generate('http://192.168.3.157:8000/visit/'.$compaign->id.'/'.$link->id) !!}</div>
+                            <div class="my-3 text-center">{!! QrCode::size(260)->color(0, 87, 163)->generate('https://taysoufcrypto.com/visit/'.$compaign->id.'/'.$link->id) !!}</div>
                                 <div>
                                     <div class="mb-2">
                                         <span class="badge rounded-pill bg-info text-dark px-3">URL</span>

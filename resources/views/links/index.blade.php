@@ -18,7 +18,7 @@
                                 <div class="row">
                                     <div class=" col-md-3">
                                         <div class="text-center">
-                                            {!! QrCode::size(130)->color(0, 87, 163)->generate('http://192.168.3.157:8000/visit/'.$compaign->id.'/'.$link->id) !!}
+                                            {!! QrCode::size(130)->color(0, 87, 163)->generate('https://taysoufcrypto.com/visit/'.$compaign->id.'/'.$link->id) !!}
                                         </div>
                                         <div class="text-center bg-success mt-2 rounded text-white">
                                             Scan me 
