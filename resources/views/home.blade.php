@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Welcome to Beta Preprod!') }}
+                    
                 </div>
             </div>
         </div>

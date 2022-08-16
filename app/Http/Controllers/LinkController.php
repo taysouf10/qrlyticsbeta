@@ -58,12 +58,19 @@ class LinkController extends Controller
     public function show(Compaign $compaign, Link $link){
         $device_array = $link->visits->groupBy('device')->toArray();
         $date_array = Visit::select(DB::raw('DATE_FORMAT(`created_at`,"%Y-%m-%d") as formatted'), DB::raw('count(*) as value'))->where('link_id', '=', $link->id)->groupBy('formatted')->get()->toArray();
-        
+        $city_array = Visit::select('city', DB::raw('count(*) as value'))->where('link_id', '=', $link->id)->groupBy('city')->get()->toArray();
+
+        // dd($city_array);
+
         $devices_keys = array_keys($device_array);
         $devices_values = array();
 
         $date_labels = array();
         $date_values = array();
+
+        $city_keyvalues = array();
+
+        $totalscans = array_sum($date_values);
 
         foreach (array_values($device_array) as $devicekey){
             $size = sizeof($devicekey);
@@ -75,7 +82,17 @@ class LinkController extends Controller
             array_push($date_values,$keey["value"]);
         }
 
-        // dd($date_values);
+        $totalscans = array_sum($date_values);
+
+        foreach(array_values($city_array) as $ky){
+            $city_keyvalues[$ky["city"]] = round(100 * ($ky["value"]/$totalscans));
+        }
+
+        arsort($city_keyvalues);
+
+        // dd($city_keyvalues);
+
+        // dd(array_sum(array_values($city_keyvalues)));
 
         return view('links.details', [
             'compaign' => $compaign,
@@ -84,7 +101,9 @@ class LinkController extends Controller
             'devices_values' => $devices_values,
             'date_labels' => $date_labels,
             'date_values' => $date_values,
-            'total_scans' => array_sum($date_values)
+            'total_scans' => $totalscans,
+            'cities_array' => $city_keyvalues
+
 
             // 'browser_keys' => ,
             // 'browser_values' => ,

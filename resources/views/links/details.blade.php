@@ -157,25 +157,27 @@
                                 <div class="card-title fw-bold border-bottom pb-3">
                                     Scans by location
                                 </div>
+                                @php
+                                    $count = 1;
+                                @endphp
+                                @foreach ($cities_array as $citykey => $cityvalue)
+
+                                    <div class="my-3 row">
+                                        <div class="col-md-4 h6 my-3">
+                                            {{$count}}- {{ $citykey }}
+                                        </div>
+                                        <div class="col-md-8 my-3">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $cityvalue }}%;" aria-valuenow="{{ $cityvalue }}" aria-valuemin="0" aria-valuemax="100">{{ $cityvalue }}%</div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    @php
+                                        $count++;
+                                    @endphp
+                                @endforeach
                                 
-                                <div class="my-3 row">
-                                    <dir class="col-md-4 h6 my-3">
-                                        1- Casablanca
-                                    </dir>
-                                    <div class="col-md-8 my-3">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                          </div>
-                                    </div>
-                                    <dir class="col-md-4 h6 my-3">
-                                        2- Rabat
-                                    </dir>
-                                    <div class="col-md-8 my-3">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                          </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
