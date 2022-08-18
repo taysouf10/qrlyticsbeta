@@ -12,76 +12,95 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+   
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/dashboard/compaigns') }}">
-                    {{-- {{ config('app.name', 'Laravel') }} --}}
-                    QRlytics
-                </a>
-                @auth
-                    <a class="navbar-brand" href="{{ url('/dashboard/compaigns') }}">
-                        Compaigns
-                    </a>
-                @endauth
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+    <div id="app" class="wrapper">
+        @guest
+            <main class="py-4">
+                @yield('content')
+            </main>
+        @else
+        <nav id="sidebar" class="sidebar-custom">
+            <div class="sidebar-header">
+                <h3>QRlytics</h3>
+                <strong>BS</strong>
+            </div>
+            <div class="d-flex flex-column justify-content-around" style="height: 100%;">
+                <div>
+                    <ul class="list-unstyled ">
+                        <li class="active">
+                            <a href="#">
+                                <i class="fas fa-home"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/dashboard/compaigns') }}">
+                                <i class="fas fa-briefcase"></i>
+                                Compaigns
+                            </a>
+                            <a href="#pageSubmenu">
+                                <i class="fas fa-copy"></i>
+                                Qr Codes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-image"></i>
+                                My Account
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-question"></i>
+                                Plans and payments
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-paper-plane"></i>
+                                Users
+                            </a>
+                        </li>
                     </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                </div>
+                <div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-home"></i>
+                                {{ Auth::user()->username }}
+                            </a>
+                        </li>
+                        <li class="">
+                            <div>
+                                <a class="dropdown-item " href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-home"></i>
                                         {{ __('Logout') }}
-                                    </a>
+                                </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                </div>
-                            </li>
-                        @endguest
+                            </div>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        
+        <main class="py-4 main-content">
             @yield('content')
         </main>
+        @endguest
+
     </div>
 </body>
 </html>
