@@ -17,7 +17,7 @@
                             <div class="card shadow-sm border-0 bg-white rounded">
                             <div class="card-body">
                                <div class="row ">
-                                    <div class="col-5 h4">
+                                    <div class="col-5 ">
                                         <div>
                                             <div class="mb-3">
                                                 <span class="badge rounded-pill bg-info text-dark px-3">URL</span>
