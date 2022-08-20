@@ -12,7 +12,8 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function() {
 
-    Route::get('/compaigns/{compaign}/links', '\App\Http\Controllers\LinkController@index');
+    Route::get('/compaigns/{compaign}/links', '\App\Http\Controllers\LinkController@index')->name('links');
+    Route::get('/links', '\App\Http\Controllers\LinkController@showall')->name('links');
     Route::get('/compaigns/{compaign}/links/new', '\App\Http\Controllers\LinkController@create');
     Route::post('/compaigns/{compaign}/links/new', '\App\Http\Controllers\LinkController@store');
     Route::get('/compaigns/{compaign}/links/{link}', '\App\Http\Controllers\LinkController@edit');
@@ -20,7 +21,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function() {
     Route::post('/compaigns/{compaign}/links/{link}', '\App\Http\Controllers\LinkController@update');
     Route::delete('/compaigns/{compaign}/links/{link}', '\App\Http\Controllers\LinkController@destroy');
 
-    Route::get('/compaigns', '\App\Http\Controllers\CompaignController@index');
+    Route::get('/compaigns', '\App\Http\Controllers\CompaignController@index')->name('compaigns');
     Route::get('/compaigns/new', '\App\Http\Controllers\CompaignController@create');
     Route::post('/compaigns/new', '\App\Http\Controllers\CompaignController@store');
     Route::get('/compaigns/{compaign}', '\App\Http\Controllers\CompaignController@edit');

@@ -32,18 +32,20 @@
             <div class="d-flex flex-column justify-content-around" style="height: 100%;">
                 <div>
                     <ul class="list-unstyled ">
-                        <li class="active">
+                        <li class="">
                             <a href="#">
                                 <i class="fas fa-home"></i>
                                 Home
                             </a>
                         </li>
-                        <li>
+                        <li class="{{ Route::currentRouteNamed('compaigns') ? 'active' : '' }}">
                             <a href="{{ url('/dashboard/compaigns') }}">
                                 <i class="fas fa-briefcase"></i>
                                 Compaigns
                             </a>
-                            <a href="#pageSubmenu">
+                        </li>
+                        <li class="{{ Route::currentRouteNamed('links') ? 'active' : '' }}">
+                            <a href="{{ url('/dashboard/links') }}">
                                 <i class="fas fa-copy"></i>
                                 Qr Codes
                             </a>

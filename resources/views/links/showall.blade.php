@@ -5,11 +5,7 @@
             <div class="col-12 ">
                 <div class="">
                     <div class="d-flex justify-content-between ">
-                        <div><h2 class="card-title">{{ $compaign->name }}</h2></div>
                         
-                        <div>
-                            <a href="/dashboard/compaigns/{{ $compaign->id }}/links/new" class="btn btn-primary">Create Link</a>
-                        </div>
                     </div>
                     <div class="my-4 row">
                         @foreach($links as $link)
@@ -30,7 +26,7 @@
                                                     <span class="">Created: {{ $link->created_at }}</span>
                                                     <span class="ms-4">
                                                         <img width="20" class="mb-1" src = "{{ asset('/images/folder_compaign.svg') }}" />
-                                                        {{ $compaign->name }}
+                                                        {{ $link->compaign->name }}
                                                     </span>
                                                 </div>
                                                 {{-- <div class="mt-3">
@@ -57,7 +53,7 @@
                                                         Scans
                                                     </div>
                                                     <div class="mt-3 ">
-                                                        <a href="/dashboard/compaigns/{{ $compaign->id }}/links/{{ $link->id }}/details" class="">
+                                                        <a href="/dashboard/compaigns/{{ $link->compaign->id }}/links/{{ $link->id }}/details" class="">
                                                             <div class="d-flex align-items-center justify-content-center">
                                                                 <div>Details</div>
                                                                 <div class="ms-2"><i class="fs-2 bi bi-arrow-right"></i></div>
@@ -70,7 +66,7 @@
                                             </div>
                                             <div class="col-md-4 text-center qr-container " >
                                                 <div class="text-center qr-code">
-                                                    {!! QrCode::size(120)->color(0, 0, 0)->generate('https://taysoufcrypto.com/visit/'.$compaign->id.'/'.$link->id) !!}
+                                                    {!! QrCode::size(120)->color(0, 0, 0)->generate('https://taysoufcrypto.com/visit/'.$link->compaign->id.'/'.$link->id) !!}
                                                 </div>
                                             </div>
                                             <div class="col-md-4 text-center ">

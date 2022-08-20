@@ -11,6 +11,7 @@ use App\Models\Visit;
 
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Route;
 
 class LinkController extends Controller
 {
@@ -20,6 +21,8 @@ class LinkController extends Controller
                 ->withCount('visits')
                 ->with('latest_visit')
                 ->get();
+
+        // dd(Route::currentRouteName());
 
         return view('links.index', [
             'links' => $links,
@@ -120,5 +123,16 @@ class LinkController extends Controller
     }
     public function destroy(Request $request, Link $link){
         
+    }
+
+    public function showall(){
+        $links = Auth::user()->links()
+        ->withCount('visits')
+        ->with('latest_visit')
+        ->get();;
+        
+        return view('links.showall', [
+            'links' => $links,
+        ]);
     }
 }
