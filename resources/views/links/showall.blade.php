@@ -70,9 +70,15 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4 text-center ">
-                                                <button class="btn btn-secondary">
-                                                    Download
-                                                </button>
+                                                <form class="form-horizontal" action="{{ route('link.download',['type' => 'png'])}}" method="post">
+                                                    @csrf
+                                                    <input type='hidden' value="png" name="qr_type" />
+                                                    <input type='hidden' value="{{ 'png' }}" name="section" />
+                                                    <button type="submit" class="align-middle btn btn-outline-primary btn-sm ml-1">
+                                                        <i class="fas fa-fw fa-download"></i>
+                                                        PNG
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

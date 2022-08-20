@@ -31,6 +31,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function() {
     Route::get('/settings', '\App\Http\Controllers\UserController@edit');
     Route::post('/settings', '\App\Http\Controllers\UserController@update');
 
+    Route::post('/links','\App\Http\Controllers\LinkController@download')->name('link.download');
+
+
 });
 
 // Route::post('/visit/{compaign}/{link}', '\App\Http\Controllers\VisitController@store');
